@@ -510,6 +510,36 @@ body {
     margin-top: 16px;
 }
 
+/* ===== Логотип в футере ===== */
+
+.footer__title-icon {
+  width: 200px;
+  height: auto;
+  display: block;
+  opacity: 0.5;
+  animation: footer-logo-glow 3.5s ease-in-out infinite;
+  transition: opacity 0.4s, transform 0.4s;
+  margin-bottom: 4px;
+}
+
+.footer__title-icon:hover {
+  opacity: 1;
+  animation-play-state: paused;
+  transform: scale(1.03);
+}
+
+@keyframes footer-logo-glow {
+  0%, 100% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 0px rgba(0, 180, 255, 0));
+  }
+  50% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 20px rgba(0, 180, 255, 0.15));
+  }
+}
+
+
 /* ============================================
    АДАПТИВНАЯ ВЁРСТКА
    ============================================ */
@@ -640,6 +670,10 @@ body {
         font-size: 0.7rem;
         padding-top: 16px;
     }
+
+    .footer__title-icon {
+        width: 150px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -710,6 +744,10 @@ body {
 
     .footer__brand {
         font-size: 1.4rem;
+    }
+
+    .footer__title-icon {
+        width: 120px;
     }
 }
 
