@@ -1,0 +1,204 @@
+/* ============================================
+   СТРАНИЦА: ПОКУПКА БИЛЕТОВ
+   ============================================ */
+
+.page-tickets {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ----- Хлебные крошки ----- */
+.tickets__breadcrumb {
+    padding: 20px 0 10px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.tickets__breadcrumb a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.tickets__breadcrumb a:hover {
+    color: #00b4ff;
+}
+
+.tickets__breadcrumb span {
+    color: rgba(255, 255, 255, 0.2);
+    margin: 0 6px;
+}
+
+/* ----- Основной контент ----- */
+.tickets__container {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    padding: 20px 0 60px;
+}
+
+/* ----- Левая колонка: форма выбора ----- */
+.tickets__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tickets__route-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    transition: 0.25s;
+}
+
+.tickets__route-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(0, 180, 255, 0.15);
+}
+
+.tickets__route-card:has(input:checked) {
+    border-color: #00b4ff;
+    background: rgba(0, 180, 255, 0.06);
+    box-shadow: 0 0 30px rgba(0, 180, 255, 0.04);
+}
+
+.tickets__route-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.tickets__route-label {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 22px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.tickets__route-icon {
+    font-size: 2rem;
+    width: 48px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.tickets__route-info {
+    flex: 1;
+}
+
+.tickets__route-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.tickets__route-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.tickets__route-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #00d4aa;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* ----- Кнопка отправки ----- */
+.tickets__submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: #00b4ff;
+    border: none;
+    border-radius: 60px;
+    color: #0b0c0e;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.25s;
+    margin-top: 8px;
+}
+
+.tickets__submit-btn:hover {
+    background: #1fc2ff;
+    box-shadow: 0 0 30px rgba(0, 180, 255, 0.3);
+}
+
+/* ----- Правая колонка: информация ----- */
+.tickets__cart {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 28px 24px;
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+.tickets__cart-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.tickets__cart-info {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+}
+
+.tickets__cart-features {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tickets__cart-feature {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+/* ----- Адаптация ----- */
+@media (max-width: 900px) {
+    .tickets__container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .tickets__cart {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-tickets {
+        padding: 0 16px;
+    }
+
+    .tickets__route-label {
+        padding: 14px 16px;
+        flex-wrap: wrap;
+    }
+
+    .tickets__route-price {
+        width: 100%;
+        text-align: right;
+        padding-left: 66px;
+    }
+
+    .tickets__cart {
+        padding: 20px 16px;
+    }
+}

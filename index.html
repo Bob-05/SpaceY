@@ -8,177 +8,206 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles\styles.css">
 </head>
 <body>
     <div class="page">
 
-        <!-- ===== ШАПКА ===== -->
+        <!-- ШАПКА -->
         <header class="header">
             <a href="#" class="header__logo">
-                <img src="assets/icons/logo-spacex.svg" alt="SpaceX" class="header__logo-icon">
+                <img src="assets/icons/logo-spacey.svg" alt="SpaceY" class="header__logo-icon">
             </a>
             <nav class="header__nav">
                 <a href="#" class="header__link">Главная</a>
-                <a href="#" class="header__link">Маршруты</a>
+                <a href="#routes" class="header__link">Маршруты</a>
                 <a href="#advantages" class="header__link">Преимущества</a>
-                <a href="#" class="header__link">Билеты</a>
-                <a href="#" class="header__link">Отзывы</a>
-                <a href="#" class="header__link">Поддержка</a>
+                <a href="pages/tickets.html" class="header__link">Билеты</a>
+                <a href="pages/reviews.html" class="header__link">Отзывы</a>
+                <a href="pages/support.html" class="header__link">Поддержка</a>
                 <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
             </nav>
         </header>
 
-        <!-- ===== HERO ===== -->
-        <section class="hero">
-            <div class="hero__content">
-                <h1 class="hero__title">
-                    Космос <em>ближе,</em><br>чем вы думаете
-                </h1>
-                <p class="hero__description">
-                    Отправьтесь в захватывающее путешествие. Бронируйте премиальные коммерческие рейсы
-                    на орбиту, Марс и Луну. Безупречный комфорт и невиданные приключения ждут за стратосферой.
-                </p>
-                <div class="hero__actions">
-                    <a href="#" class="button button--primary">НАЙТИ ТУР →</a>
-                    <a href="#" class="hero__watch">▶ СМОТРЕТЬ ТРЕЙЛЕР [02:40]</a>
+        <!-- ОСНОВНАЯ ЧАСТЬ -->
+        <main>
+            <!--  HERO  -->
+            <section class="hero">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        Космос <em>ближе,</em><br>чем вы думаете
+                    </h1>
+                    <p class="hero__description">
+                        Отправьтесь в захватывающее путешествие. Бронируйте премиальные коммерческие рейсы
+                        на орбиту, Марс и Луну. Безупречный комфорт и невиданные приключения ждут за стратосферой.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#" class="button button--primary">НАЙТИ ТУР →</a>
+                        <a href="https://www.youtube.com/watch?v=0LeN2WyqGDo&list=RD0LeN2WyqGDo&start_radio=1" class="hero__watch">▶ СМОТРЕТЬ ТРЕЙЛЕР [02:40]</a>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="hero__stat-item">
+                            <span class="hero__stat-value">482</span>
+                            <span class="hero__stat-label">полётов</span>
+                        </div>
+                        <div class="hero__stat-item">
+                            <span class="hero__stat-value">0.00%</span>
+                            <span class="hero__stat-label">отказов</span>
+                        </div>
+                        <div class="hero__stat-item">
+                            <span class="hero__stat-value">12,4K+</span>
+                            <span class="hero__stat-label">туристов</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero__stats">
-                    <div class="hero__stat-item">
-                        <span class="hero__stat-value">482</span>
-                        <span class="hero__stat-label">полётов</span>
-                    </div>
-                    <div class="hero__stat-item">
-                        <span class="hero__stat-value">0.00%</span>
-                        <span class="hero__stat-label">отказов</span>
-                    </div>
-                    <div class="hero__stat-item">
-                        <span class="hero__stat-value">12,4K+</span>
-                        <span class="hero__stat-label">туристов</span>
-                    </div>
+                <div class="hero__image">
+                    <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="200" cy="170" r="120" stroke="#00b4ff" stroke-opacity="0.12" stroke-width="1.5" stroke-dasharray="8 8" />
+                        <circle cx="200" cy="170" r="90" stroke="#00b4ff" stroke-opacity="0.08" stroke-width="1" />
+                        <path d="M200 50 L220 80 L180 80 L200 50Z" fill="#00b4ff" fill-opacity="0.6" />
+                        <ellipse cx="200" cy="170" rx="30" ry="14" fill="#ff3b5c" fill-opacity="0.2" />
+                        <ellipse cx="200" cy="170" rx="14" ry="6" fill="#ff3b5c" fill-opacity="0.3" />
+                        <path d="M160 200 L200 230 L240 200 L200 260 L160 200Z" fill="#00b4ff" fill-opacity="0.1" />
+                        <circle cx="200" cy="170" r="6" fill="#00b4ff" fill-opacity="0.6" />
+                        <path d="M130 130 L150 140 L140 160 L120 150 L130 130Z" fill="#00d4aa" fill-opacity="0.2" />
+                        <path d="M270 130 L250 140 L260 160 L280 150 L270 130Z" fill="#00d4aa" fill-opacity="0.2" />
+                    </svg>
                 </div>
+            </section>
+
+            <!-- ТЕЛЕМЕТРИЯ -->
+            <div class="telemetry">
+                <span class="telemetry__item">
+                    ⚡ ИОННЫЙ ДВИГАТЕЛЬ
+                    <span class="telemetry__value">012 СВ/Ч</span>
+                    <!-- Всплывающая карточка -->
+                    <span class="telemetry__tooltip">
+                        <img src="assets/images/ion-engine.jpg" alt="Ионный двигатель" class="telemetry__tooltip-image">
+                        <span class="telemetry__tooltip-caption">Ионный двигатель</span>
+                    </span>
+                </span>
+
+                <span class="telemetry__item">
+                    🛡️ ЩИТЫ
+                    <span class="telemetry__value">100%</span>
+                    <!-- Всплывающая карточка -->
+                    <span class="telemetry__tooltip">
+                        <img src="assets/images/shields.jpg" alt="Энергетические щиты" class="telemetry__tooltip-image">
+                        <span class="telemetry__tooltip-caption">Энергетические щиты</span>
+                    </span>
+                </span>
+
+                <span class="telemetry__item">
+                    🤖 АВТОПИЛОТ
+                    <span class="telemetry__value">ВКЛ</span>
+                    <!-- Всплывающая карточка -->
+                    <span class="telemetry__tooltip">
+                        <img src="assets/images/autopilot.jpg" alt="Система автопилота" class="telemetry__tooltip-image">
+                        <span class="telemetry__tooltip-caption">Система автопилота</span>
+                    </span>
+                </span>
             </div>
-            <div class="hero__image">
-                <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="200" cy="170" r="120" stroke="#00b4ff" stroke-opacity="0.12" stroke-width="1.5" stroke-dasharray="8 8" />
-                    <circle cx="200" cy="170" r="90" stroke="#00b4ff" stroke-opacity="0.08" stroke-width="1" />
-                    <path d="M200 50 L220 80 L180 80 L200 50Z" fill="#00b4ff" fill-opacity="0.6" />
-                    <ellipse cx="200" cy="170" rx="30" ry="14" fill="#ff3b5c" fill-opacity="0.2" />
-                    <ellipse cx="200" cy="170" rx="14" ry="6" fill="#ff3b5c" fill-opacity="0.3" />
-                    <path d="M160 200 L200 230 L240 200 L200 260 L160 200Z" fill="#00b4ff" fill-opacity="0.1" />
-                    <circle cx="200" cy="170" r="6" fill="#00b4ff" fill-opacity="0.6" />
-                    <path d="M130 130 L150 140 L140 160 L120 150 L130 130Z" fill="#00d4aa" fill-opacity="0.2" />
-                    <path d="M270 130 L250 140 L260 160 L280 150 L270 130Z" fill="#00d4aa" fill-opacity="0.2" />
-                </svg>
-            </div>
-        </section>
 
-        <!-- ===== ТЕЛЕМЕТРИЯ ===== -->
-        <div class="telemetry">
-            <span class="telemetry__item">⚡ ИОННЫЙ ДВИГАТЕЛЬ <span class="telemetry__value">012 СВ/Ч</span></span>
-            <span class="telemetry__item">🛡️ ЩИТЫ <span class="telemetry__value">100%</span></span>
-            <span class="telemetry__item">🤖 АВТОПИЛОТ <span class="telemetry__value">ВКЛ</span></span>
-        </div>
+            <!-- ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ -->
+            <section class="section" id="routes">
+                <h2 class="section__title">Популярные направления</h2>
+                <div class="section__sub">Маршруты с подтверждённой готовностью</div>
 
-        <!-- ===== ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ ===== -->
-        <section class="section">
-            <h2 class="section__title">Популярные направления</h2>
-            <div class="section__sub">Маршруты с подтверждённой готовностью</div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card__badge">МАРШРУТ ГОТОВ</div>
+                        <div class="card__image">🌙</div>
+                        <h3 class="card__title">Уикенд на Луне</h3>
+                        <p class="card__description">Ощутите малую гравитацию. Прогулка по исторической базе и проживание в ультра-голубых куполах.</p>
+                        <div class="card__footer">
+                            <span class="card__price">$250K / место</span>
+                            <a href="#" class="card__link">ДЕТАЛИ →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__badge">МАРШРУТ ГОТОВ</div>
+                        <div class="card__image">🔴</div>
+                        <h3 class="card__title">Экспедиция на Марс</h3>
+                        <p class="card__description">Монументальная 30-дневная экспедиция. Исследования роверами в долине Олимп и на красных равнинах.</p>
+                        <div class="card__footer">
+                            <span class="card__price">$3.5M / место</span>
+                            <a href="#" class="card__link">ДЕТАЛИ →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__badge">МАРШРУТ ГОТОВ</div>
+                        <div class="card__image">🪐</div>
+                        <h3 class="card__title">Пролёт колец Сатурна</h3>
+                        <p class="card__description">Круиз параллельно ледяным кольцам. Захватывающая орбитальная траектория с панорамными видами атмосферы.</p>
+                        <div class="card__footer">
+                            <span class="card__price">$1.2M / место</span>
+                            <a href="#" class="card__link">ДЕТАЛИ →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__badge">НОВИНКА</div>
+                        <div class="card__image">🌍</div>
+                        <h3 class="card__title">Орбитальный отель</h3>
+                        <p class="card__description">5 дней на низкой орбите, вид на Землю, невесомость и спа-салон с панорамными окнами.</p>
+                        <div class="card__footer">
+                            <span class="card__price">$890K / место</span>
+                            <a href="#" class="card__link">ДЕТАЛИ →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__badge">ЭКСКЛЮЗИВ</div>
+                        <div class="card__image">☄️</div>
+                        <h3 class="card__title">Облёт астероида</h3>
+                        <p class="card__description">Классический облёт с научной программой. Фотосессия у поверхности и возврат к Земле.</p>
+                        <div class="card__footer">
+                            <span class="card__price">$2.1M / место</span>
+                            <a href="#" class="card__link">ДЕТАЛИ →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__badge">ПОПУЛЯРНЫЙ</div>
+                        <div class="card__image">🚀</div>
+                        <h3 class="card__title">Старт ARC-TITAN IX</h3>
+                        <p class="card__description">Сверхзвуковой тур на границу космоса. Невесомость, виды Земли и научный эксперимент.</p>
+                        <div class="card__footer">
+                            <span class="card__price">$450K / место</span>
+                            <a href="#" class="card__link">ДЕТАЛИ →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card__badge">МАРШРУТ ГОТОВ</div>
-                    <div class="card__image">🌙</div>
-                    <h3 class="card__title">Уикенд на Луне</h3>
-                    <p class="card__description">Ощутите малую гравитацию. Прогулка по исторической базе и проживание в ультра-голубых куполах.</p>
-                    <div class="card__footer">
-                        <span class="card__price">$250K / место</span>
-                        <a href="#" class="card__link">ДЕТАЛИ →</a>
+            <!-- ПРЕИМУЩЕСТВА (с якорем #advantages) -->
+            <section class="section" id="advantages">
+                <div class="what">
+                    <h2 class="section__title">Почему</h2>
+                    <img src="assets/icons/logo-spacey.svg" alt="SpaceY" class="section__title-icon">
+                </div>
+                <div class="section__sub">Технологии, которым мы доверяем</div>
+                <div class="advantages">
+                    <div class="advantage">
+                        <div class="advantage__icon">🛡️</div>
+                        <div class="advantage__title">Безопасность полёта</div>
+                        <div class="advantage__text">Тройные корпуса, резервные ионные системы и броня военного класса — 100% сохранность миссии.</div>
+                    </div>
+                    <div class="advantage">
+                        <div class="advantage__icon">⚡</div>
+                        <div class="advantage__title">Ионные двигатели</div>
+                        <div class="advantage__text">Новейшая световая тяга сокращает время в пути на 40% с идеально плавным ускорением.</div>
+                    </div>
+                    <div class="advantage">
+                        <div class="advantage__icon">🌟</div>
+                        <div class="advantage__title">Звёздные гиды</div>
+                        <div class="advantage__text">Каждая экспедиция под командованием ветеранов с 5000+ часов пилотирования в глубоком космосе.</div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card__badge">МАРШРУТ ГОТОВ</div>
-                    <div class="card__image">🔴</div>
-                    <h3 class="card__title">Экспедиция на Марс</h3>
-                    <p class="card__description">Монументальная 30-дневная экспедиция. Исследования роверами в долине Олимп и на красных равнинах.</p>
-                    <div class="card__footer">
-                        <span class="card__price">$3.5M / место</span>
-                        <a href="#" class="card__link">ДЕТАЛИ →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__badge">МАРШРУТ ГОТОВ</div>
-                    <div class="card__image">🪐</div>
-                    <h3 class="card__title">Пролёт колец Сатурна</h3>
-                    <p class="card__description">Круиз параллельно ледяным кольцам. Захватывающая орбитальная траектория с панорамными видами атмосферы.</p>
-                    <div class="card__footer">
-                        <span class="card__price">$1.2M / место</span>
-                        <a href="#" class="card__link">ДЕТАЛИ →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__badge">НОВИНКА</div>
-                    <div class="card__image">🌍</div>
-                    <h3 class="card__title">Орбитальный отель</h3>
-                    <p class="card__description">5 дней на низкой орбите, вид на Землю, невесомость и спа-салон с панорамными окнами.</p>
-                    <div class="card__footer">
-                        <span class="card__price">$890K / место</span>
-                        <a href="#" class="card__link">ДЕТАЛИ →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__badge">ЭКСКЛЮЗИВ</div>
-                    <div class="card__image">☄️</div>
-                    <h3 class="card__title">Облёт астероида</h3>
-                    <p class="card__description">Классический облёт с научной программой. Фотосессия у поверхности и возврат к Земле.</p>
-                    <div class="card__footer">
-                        <span class="card__price">$2.1M / место</span>
-                        <a href="#" class="card__link">ДЕТАЛИ →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card__badge">ПОПУЛЯРНЫЙ</div>
-                    <div class="card__image">🚀</div>
-                    <h3 class="card__title">Старт ARC-TITAN IX</h3>
-                    <p class="card__description">Сверхзвуковой тур на границу космоса. Невесомость, виды Земли и научный эксперимент.</p>
-                    <div class="card__footer">
-                        <span class="card__price">$450K / место</span>
-                        <a href="#" class="card__link">ДЕТАЛИ →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
-        <!-- ===== ПРЕИМУЩЕСТВА (с якорем #advantages) ===== -->
-        <section class="section" id="advantages">
-            <h2 class="section__title">
-                Почему
-                <img src="assets/icons/logo-spacex.svg" alt="SpaceY" class="section__title-icon">
-            </h2>
-            <div class="section__sub">Технологии, которым мы доверяем</div>
-            <div class="advantages">
-                <div class="advantage">
-                    <div class="advantage__icon">🛡️</div>
-                    <div class="advantage__title">Безопасность полёта</div>
-                    <div class="advantage__text">Тройные корпуса, резервные ионные системы и броня военного класса — 100% сохранность миссии.</div>
-                </div>
-                <div class="advantage">
-                    <div class="advantage__icon">⚡</div>
-                    <div class="advantage__title">Ионные двигатели</div>
-                    <div class="advantage__text">Новейшая световая тяга сокращает время в пути на 40% с идеально плавным ускорением.</div>
-                </div>
-                <div class="advantage">
-                    <div class="advantage__icon">🌟</div>
-                    <div class="advantage__title">Звёздные гиды</div>
-                    <div class="advantage__text">Каждая экспедиция под командованием ветеранов с 5000+ часов пилотирования в глубоком космосе.</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== ПОДВАЛ ===== -->
+        <!-- ПОДВАЛ -->
         <footer class="footer">
             <div>
-                <img src="assets/icons/logo-spacex.svg" alt="SpaceY" class="footer__title-icon">
+                <img src="assets/icons/logo-spacey.svg" alt="SpaceY" class="footer__title-icon">
             </div>
             <div class="footer__nav">
                 <div class="footer__col">

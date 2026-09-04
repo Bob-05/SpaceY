@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Покупка билетов — SpaceY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/page-tickets.css">
+</head>
+<body>
+    <div class="page-tickets">
+
+        <!-- ===== ШАПКА ===== -->
+        <header class="header">
+            <a href="../index.html" class="header__logo">
+                <img src="../assets/icons/logo-spacey.svg" alt="SpaceY" class="header__logo-icon">
+            </a>
+            <nav class="header__nav">
+                <a href="../index.html" class="header__link">Главная</a>
+                <a href="../index.html#routes" class="header__link">Маршруты</a>
+                <a href="../index.html#advantages" class="header__link">Преимущества</a>
+                <a href="tickets.html" class="header__link header__link--active">Билеты</a>
+                <a href="reviews.html" class="header__link">Отзывы</a>
+                <a href="support.html" class="header__link">Поддержка</a>
+                <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
+            </nav>
+        </header>
+
+        <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+        <div class="tickets__breadcrumb">
+            <a href="../index.html">Главная</a>
+            <span>›</span>
+            <span>Покупка билетов</span>
+        </div>
+
+        <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+        <div class="tickets__container">
+
+            <!-- Левая колонка: выбор маршрута -->
+            <div class="tickets__routes">
+                <form action="#" method="POST" class="tickets__form">
+
+                    <div class="tickets__route-card">
+                        <input type="radio" name="route" id="route-moon" value="moon" checked>
+                        <label for="route-moon" class="tickets__route-label">
+                            <span class="tickets__route-icon">🌙</span>
+                            <span class="tickets__route-info">
+                                <span class="tickets__route-name">Уикенд на Луне</span>
+                                <span class="tickets__route-desc">Прогулка по исторической базе и проживание в куполах</span>
+                            </span>
+                            <span class="tickets__route-price">$250K</span>
+                        </label>
+                    </div>
+
+                    <div class="tickets__route-card">
+                        <input type="radio" name="route" id="route-mars" value="mars">
+                        <label for="route-mars" class="tickets__route-label">
+                            <span class="tickets__route-icon">🔴</span>
+                            <span class="tickets__route-info">
+                                <span class="tickets__route-name">Экспедиция на Марс</span>
+                                <span class="tickets__route-desc">30-дневная экспедиция с исследованиями роверами</span>
+                            </span>
+                            <span class="tickets__route-price">$3.5M</span>
+                        </label>
+                    </div>
+
+                    <div class="tickets__route-card">
+                        <input type="radio" name="route" id="route-saturn" value="saturn">
+                        <label for="route-saturn" class="tickets__route-label">
+                            <span class="tickets__route-icon">🪐</span>
+                            <span class="tickets__route-info">
+                                <span class="tickets__route-name">Пролёт колец Сатурна</span>
+                                <span class="tickets__route-desc">Круиз параллельно ледяным кольцам</span>
+                            </span>
+                            <span class="tickets__route-price">$1.2M</span>
+                        </label>
+                    </div>
+
+                    <div class="tickets__route-card">
+                        <input type="radio" name="route" id="route-hotel" value="hotel">
+                        <label for="route-hotel" class="tickets__route-label">
+                            <span class="tickets__route-icon">🌍</span>
+                            <span class="tickets__route-info">
+                                <span class="tickets__route-name">Орбитальный отель</span>
+                                <span class="tickets__route-desc">5 дней на орбите, вид на Землю и невесомость</span>
+                            </span>
+                            <span class="tickets__route-price">$890K</span>
+                        </label>
+                    </div>
+
+                    <div class="tickets__route-card">
+                        <input type="radio" name="route" id="route-asteroid" value="asteroid">
+                        <label for="route-asteroid" class="tickets__route-label">
+                            <span class="tickets__route-icon">☄️</span>
+                            <span class="tickets__route-info">
+                                <span class="tickets__route-name">Облёт астероида</span>
+                                <span class="tickets__route-desc">Классический облёт с научной программой</span>
+                            </span>
+                            <span class="tickets__route-price">$2.1M</span>
+                        </label>
+                    </div>
+
+                    <div class="tickets__route-card">
+                        <input type="radio" name="route" id="route-titan" value="titan">
+                        <label for="route-titan" class="tickets__route-label">
+                            <span class="tickets__route-icon">🚀</span>
+                            <span class="tickets__route-info">
+                                <span class="tickets__route-name">Старт ARC-TITAN IX</span>
+                                <span class="tickets__route-desc">Сверхзвуковой тур на границу космоса</span>
+                            </span>
+                            <span class="tickets__route-price">$450K</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="tickets__submit-btn">💳 Оплатить</button>
+                </form>
+            </div>
+
+            <!-- Правая колонка: информация -->
+            <div class="tickets__cart">
+                <div class="tickets__cart-title">🛒 Информация</div>
+                <div class="tickets__cart-info">
+                    <p>Выберите маршрут слева и нажмите кнопку "Оплатить".</p>
+                    <p style="margin-top:12px; color:rgba(255,255,255,0.3); font-size:0.8rem;">
+                        После оплаты билеты будут отправлены на вашу почту.
+                    </p>
+                </div>
+                <div class="tickets__cart-features">
+                    <div class="tickets__cart-feature">✅ Безопасная оплата</div>
+                    <div class="tickets__cart-feature">✅ Мгновенное подтверждение</div>
+                    <div class="tickets__cart-feature">✅ Поддержка 24/7</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ПОДВАЛ ===== -->
+        <footer class="footer">
+            <div>
+                <img src="../assets/icons/logo-spacey.svg" alt="SpaceY" class="footer__title-icon">
+            </div>
+            <div class="footer__nav">
+                <div class="footer__col">
+                    <span class="footer__col-head">Навигация</span>
+                    <a href="../index.html" class="footer__link">Главная</a>
+                    <a href="tickets.html" class="footer__link">Билеты</a>
+                    <a href="reviews.html" class="footer__link">Отзывы</a>
+                    <a href="support.html" class="footer__link">Поддержка</a>
+                </div>
+                <div class="footer__col">
+                    <span class="footer__col-head">Ресурсы</span>
+                    <a href="#" class="footer__link">Портал поддержки</a>
+                    <a href="#" class="footer__link">Соглашения</a>
+                    <a href="#" class="footer__link">Технологии флота</a>
+                    <a href="#" class="footer__link">FAQ</a>
+                </div>
+                <div class="footer__col">
+                    <span class="footer__col-head">Разработчик</span>
+                    <a href="#" class="footer__link footer__link--max">
+                        <img src="../assets/icons/icon-max.svg" alt="MAX" class="footer__max-icon">
+                        MAX
+                    </a>
+                </div>
+            </div>
+            <div class="footer__copy">
+                © 2035 SpaceY. Разработано для премиальных орбитальных путешествий. Все рейсы подтверждены орбитальным контролем.
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
