@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Отзывы — SpaceY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/page-reviews.css">
+</head>
+<body>
+    <div class="page-reviews">
+
+        <!-- ===== ШАПКА ===== -->
+        <header class="header">
+            <a href="../index.html" class="header__logo">
+                <img src="../assets/icons/logo-spacey.svg" alt="SpaceY" class="header__logo-icon">
+            </a>
+            <nav class="header__nav">
+                <a href="../index.html" class="header__link">Главная</a>
+                <a href="../index.html#routes" class="header__link">Маршруты</a>
+                <a href="../index.html#advantages" class="header__link">Преимущества</a>
+                <a href="tickets.html" class="header__link">Билеты</a>
+                <a href="reviews.html" class="header__link header__link--active">Отзывы</a>
+                <a href="support.html" class="header__link">Поддержка</a>
+                <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
+            </nav>
+        </header>
+
+        <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+        <div class="reviews__breadcrumb">
+            <a href="../index.html">Главная</a>
+            <span>›</span>
+            <span>Отзывы</span>
+        </div>
+
+        <!-- ===== ОТЗЫВЫ (статические) ===== -->
+        <div class="reviews__grid">
+            <div class="reviews__item">
+                <div class="reviews__item-header">
+                    <span class="reviews__item-name">Алексей Смирнов</span>
+                    <span class="reviews__item-date">12.03.2026</span>
+                </div>
+                <div class="reviews__item-rating">★★★★★</div>
+                <div class="reviews__item-text">Невероятное путешествие! Лунная база превзошла все ожидания. Обязательно вернусь на Марс!</div>
+            </div>
+
+            <div class="reviews__item">
+                <div class="reviews__item-header">
+                    <span class="reviews__item-name">Екатерина Воронова</span>
+                    <span class="reviews__item-date">28.02.2026</span>
+                </div>
+                <div class="reviews__item-rating">★★★★☆</div>
+                <div class="reviews__item-text">Орбитальный отель — это что-то невероятное. Вид на Землю захватывает дух. Единственный минус — дороговато.</div>
+            </div>
+
+            <div class="reviews__item">
+                <div class="reviews__item-header">
+                    <span class="reviews__item-name">Дмитрий Кузнецов</span>
+                    <span class="reviews__item-date">15.01.2026</span>
+                </div>
+                <div class="reviews__item-rating">★★★★★</div>
+                <div class="reviews__item-text">Пролёт колец Сатурна — мечта всей жизни! Команда SpaceY сделала всё на высшем уровне. Рекомендую!</div>
+            </div>
+
+            <div class="reviews__item">
+                <div class="reviews__item-header">
+                    <span class="reviews__item-name">Ольга Морозова</span>
+                    <span class="reviews__item-date">03.12.2025</span>
+                </div>
+                <div class="reviews__item-rating">★★★★★</div>
+                <div class="reviews__item-text">Экспедиция на Марс — это не просто тур, это настоящее приключение. Роверы, виды, атмосфера — всё супер!</div>
+            </div>
+
+            <div class="reviews__item">
+                <div class="reviews__item-header">
+                    <span class="reviews__item-name">Михаил Волков</span>
+                    <span class="reviews__item-date">18.11.2025</span>
+                </div>
+                <div class="reviews__item-rating">★★★★☆</div>
+                <div class="reviews__item-text">Отличный сервис! Всё организовано на высшем уровне. Немного не хватило времени на Луне, но это мелочи.</div>
+            </div>
+
+            <div class="reviews__item">
+                <div class="reviews__item-header">
+                    <span class="reviews__item-name">Анна Соколова</span>
+                    <span class="reviews__item-date">05.10.2025</span>
+                </div>
+                <div class="reviews__item-rating">★★★★★</div>
+                <div class="reviews__item-text">Потрясающий опыт! Вид на Землю из космоса — это не передать словами. Спасибо SpaceY за эту возможность!</div>
+            </div>
+        </div>
+
+        <!-- ===== ФОРМА ДОБАВЛЕНИЯ ОТЗЫВА ===== -->
+        <div class="reviews__form">
+            <div class="reviews__form-title">✏️ Написать отзыв</div>
+            <div class="reviews__form-sub">Поделитесь впечатлениями о космическом путешествии</div>
+
+            <form action="#" method="POST">
+                <div class="reviews__form-row">
+                    <div class="reviews__form-group">
+                        <label for="review-name">Ваше имя</label>
+                        <input type="text" id="review-name" name="name" placeholder="Иван Петров">
+                    </div>
+                    <div class="reviews__form-group">
+                        <label>Оценка</label>
+                        <div class="reviews__form-rating">
+                            <label class="star active" data-value="5">★</label>
+                            <label class="star active" data-value="4">★</label>
+                            <label class="star active" data-value="3">★</label>
+                            <label class="star active" data-value="2">★</label>
+                            <label class="star active" data-value="1">★</label>
+                            <input type="hidden" name="rating" value="5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews__form-group">
+                    <label for="review-text">Текст отзыва</label>
+                    <textarea id="review-text" name="text" placeholder="Расскажите о вашем опыте..."></textarea>
+                </div>
+
+                <button type="submit" class="reviews__form-button">📨 Отправить отзыв</button>
+            </form>
+        </div>
+
+        <!-- ===== ПОДВАЛ ===== -->
+        <footer class="footer">
+            <div>
+                <img src="../assets/icons/logo-spacey.svg" alt="SpaceY" class="footer__title-icon">
+            </div>
+            <div class="footer__nav">
+                <div class="footer__col">
+                    <span class="footer__col-head">Навигация</span>
+                    <a href="../index.html" class="footer__link">Главная</a>
+                    <a href="tickets.html" class="footer__link">Билеты</a>
+                    <a href="reviews.html" class="footer__link">Отзывы</a>
+                    <a href="support.html" class="footer__link">Поддержка</a>
+                </div>
+                <div class="footer__col">
+                    <span class="footer__col-head">Ресурсы</span>
+                    <a href="#" class="footer__link">Портал поддержки</a>
+                    <a href="#" class="footer__link">Соглашения</a>
+                    <a href="#" class="footer__link">Технологии флота</a>
+                    <a href="#" class="footer__link">FAQ</a>
+                </div>
+                <div class="footer__col">
+                    <span class="footer__col-head">Разработчик</span>
+                    <a href="#" class="footer__link footer__link--max">
+                        <img src="../assets/icons/icon-max.svg" alt="MAX" class="footer__max-icon">
+                        MAX
+                    </a>
+                </div>
+            </div>
+            <div class="footer__copy">
+                © 2035 SpaceY. Разработано для премиальных орбитальных путешествий. Все рейсы подтверждены орбитальным контролем.
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
