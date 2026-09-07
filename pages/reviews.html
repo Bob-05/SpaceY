@@ -9,15 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/page-reviews.css">
+    <link rel="stylesheet" href="../styles/burger.css">
+    <link rel="stylesheet" href="../styles/scroll-to-top.css">
+
+    <script src="../scripts/scroll-to-top.js" defer></script>
+    <script src="../scripts/burger.js" defer></script>
+    <script src="../scripts/theme.js" defer></script>
 </head>
 <body>
     <div class="page-reviews">
 
-        <!-- ===== ШАПКА ===== -->
+        <!-- ШАПКА -->
         <header class="header">
             <a href="../index.html" class="header__logo">
                 <img src="../assets/icons/logo-spacey.svg" alt="SpaceY" class="header__logo-icon">
             </a>
+
+            <!-- БУРГЕР-КНОПКА -->
+            <button class="burger" id="burger" aria-label="Меню">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+
             <nav class="header__nav">
                 <a href="../index.html" class="header__link">Главная</a>
                 <a href="../index.html#routes" class="header__link">Маршруты</a>
@@ -26,17 +40,22 @@
                 <a href="reviews.html" class="header__link header__link--active">Отзывы</a>
                 <a href="support.html" class="header__link">Поддержка</a>
                 <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
+
+                <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                    <span class="theme-toggle__icon">🌙</span>
+                </button>
             </nav>
         </header>
 
-        <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+        <!-- ХЛЕБНЫЕ КРОШКИ -->
         <div class="reviews__breadcrumb">
             <a href="../index.html">Главная</a>
             <span>›</span>
             <span>Отзывы</span>
         </div>
 
-        <!-- ===== ОТЗЫВЫ (статические) ===== -->
+        <!-- ОТЗЫВЫ (статические) -->
         <div class="reviews__grid">
             <div class="reviews__item">
                 <div class="reviews__item-header">
@@ -93,7 +112,7 @@
             </div>
         </div>
 
-        <!-- ===== ФОРМА ДОБАВЛЕНИЯ ОТЗЫВА ===== -->
+        <!-- ФОРМА ДОБАВЛЕНИЯ ОТЗЫВА -->
         <div class="reviews__form">
             <div class="reviews__form-title">✏️ Написать отзыв</div>
             <div class="reviews__form-sub">Поделитесь впечатлениями о космическом путешествии</div>
@@ -126,7 +145,7 @@
             </form>
         </div>
 
-        <!-- ===== ПОДВАЛ ===== -->
+        <!-- ПОДВАЛ -->
         <footer class="footer">
             <div>
                 <img src="../assets/icons/logo-spacey.svg" alt="SpaceY" class="footer__title-icon">
@@ -160,5 +179,9 @@
         </footer>
 
     </div>
+
+    <!-- Кнопка наверх -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Наверх">↑</button>
+
 </body>
 </html>
