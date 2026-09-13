@@ -12,21 +12,21 @@
 .support__breadcrumb {
     padding: 20px 0 10px;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
 }
 
 .support__breadcrumb a {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: 0.2s;
 }
 
 .support__breadcrumb a:hover {
-    color: #00b4ff;
+    color: var(--btn-primary);
 }
 
 .support__breadcrumb span {
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--text-muted);
     margin: 0 6px;
 }
 
@@ -40,8 +40,8 @@
 
 /* ----- Форма ----- */
 .support__form {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 32px 28px;
 }
@@ -51,11 +51,12 @@
     font-weight: 600;
     font-size: 1.4rem;
     margin-bottom: 4px;
+    color: var(--text-primary);
 }
 
 .support__form-sub {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
     margin-bottom: 24px;
 }
 
@@ -66,13 +67,13 @@
 .support__form-group label {
     display: block;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     margin-bottom: 6px;
     letter-spacing: 0.04em;
 }
 
 .support__form-group .required {
-    color: #ff3b5c;
+    color: var(--btn-accent);
     margin-left: 4px;
 }
 
@@ -81,10 +82,10 @@
 .support__form-group textarea {
     width: 100%;
     padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
     border-radius: 14px;
-    color: #fff;
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     outline: none;
@@ -94,13 +95,13 @@
 .support__form-group input:focus,
 .support__form-group select:focus,
 .support__form-group textarea:focus {
-    border-color: #00b4ff;
-    background: rgba(0, 180, 255, 0.04);
+    border-color: var(--btn-primary);
+    background: var(--bg-secondary);
 }
 
 .support__form-group input::placeholder,
 .support__form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--text-muted);
 }
 
 .support__form-group select {
@@ -112,8 +113,8 @@
 }
 
 .support__form-group select option {
-    background: #1a1e26;
-    color: #fff;
+    background: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .support__form-group textarea {
@@ -130,7 +131,7 @@
 .support__form-button {
     width: 100%;
     padding: 14px;
-    background: #00b4ff;
+    background: var(--btn-primary);
     border: none;
     border-radius: 60px;
     color: #0b0c0e;
@@ -143,8 +144,8 @@
 }
 
 .support__form-button:hover {
-    background: #1fc2ff;
-    box-shadow: 0 0 30px rgba(0, 180, 255, 0.3);
+    background: var(--btn-primary-hover);
+    box-shadow: 0 0 30px var(--shadow-color);
 }
 
 /* ----- Правая колонка: информация ----- */
@@ -155,8 +156,8 @@
 }
 
 .support__info-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 24px 22px;
 }
@@ -171,16 +172,17 @@
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 4px;
+    color: var(--text-primary);
 }
 
 .support__info-card p {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 
 .support__info-card .highlight {
-    color: #00d4aa;
+    color: var(--status-color);
 }
 
 /* ----- Адаптация ----- */

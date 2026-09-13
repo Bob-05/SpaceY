@@ -8,12 +8,12 @@
     height: 50px;
     border: none;
     border-radius: 50%;
-    background: #00b4ff;
+    background: var(--scroll-bg);
     color: #0b0c0e;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 180, 255, 0.4);
+    box-shadow: 0 4px 15px var(--shadow-color);
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
@@ -28,6 +28,6 @@
 }
 
 .scroll-to-top:hover {
-    background: #0099d6;
+    background: var(--scroll-bg-hover);
     transform: translateY(-3px);
 }

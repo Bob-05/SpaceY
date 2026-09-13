@@ -12,21 +12,21 @@
 .tickets__breadcrumb {
     padding: 20px 0 10px;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
 }
 
 .tickets__breadcrumb a {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: 0.2s;
 }
 
 .tickets__breadcrumb a:hover {
-    color: #00b4ff;
+    color: var(--btn-primary);
 }
 
 .tickets__breadcrumb span {
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--text-muted);
     margin: 0 6px;
 }
 
@@ -47,21 +47,21 @@
 
 .tickets__route-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     transition: 0.25s;
 }
 
 .tickets__route-card:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--bg-secondary);
     border-color: rgba(0, 180, 255, 0.15);
 }
 
 .tickets__route-card:has(input:checked) {
-    border-color: #00b4ff;
+    border-color: var(--btn-primary);
     background: rgba(0, 180, 255, 0.06);
-    box-shadow: 0 0 30px rgba(0, 180, 255, 0.04);
+    box-shadow: 0 0 30px var(--shadow-color);
 }
 
 .tickets__route-card input[type="radio"] {
@@ -95,17 +95,18 @@
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 1.05rem;
+    color: var(--text-primary);
 }
 
 .tickets__route-desc {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
 }
 
 .tickets__route-price {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
-    color: #00d4aa;
+    color: var(--status-color);
     font-size: 1.1rem;
     white-space: nowrap;
 }
@@ -114,7 +115,7 @@
 .tickets__submit-btn {
     width: 100%;
     padding: 16px;
-    background: #00b4ff;
+    background: var(--btn-primary);
     border: none;
     border-radius: 60px;
     color: #0b0c0e;
@@ -127,14 +128,14 @@
 }
 
 .tickets__submit-btn:hover {
-    background: #1fc2ff;
-    box-shadow: 0 0 30px rgba(0, 180, 255, 0.3);
+    background: var(--btn-primary-hover);
+    box-shadow: 0 0 30px var(--shadow-color);
 }
 
 /* ----- Правая колонка: информация ----- */
 .tickets__cart {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 28px 24px;
     position: sticky;
@@ -147,11 +148,12 @@
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 16px;
+    color: var(--text-primary);
 }
 
 .tickets__cart-info {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
@@ -164,9 +166,9 @@
 
 .tickets__cart-feature {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-secondary);
     border-radius: 10px;
 }
 

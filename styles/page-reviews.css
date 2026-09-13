@@ -12,21 +12,21 @@
 .reviews__breadcrumb {
     padding: 20px 0 10px;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
 }
 
 .reviews__breadcrumb a {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: 0.2s;
 }
 
 .reviews__breadcrumb a:hover {
-    color: #00b4ff;
+    color: var(--btn-primary);
 }
 
 .reviews__breadcrumb span {
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--text-muted);
     margin: 0 6px;
 }
 
@@ -39,15 +39,15 @@
 }
 
 .reviews__item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 22px 24px;
     transition: 0.25s;
 }
 
 .reviews__item:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--bg-secondary);
     transform: translateY(-4px);
     border-color: rgba(0, 180, 255, 0.08);
 }
@@ -62,11 +62,12 @@
 .reviews__item-name {
     font-weight: 600;
     font-size: 1rem;
+    color: var(--text-primary);
 }
 
 .reviews__item-date {
     font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
 }
 
 .reviews__item-rating {
@@ -78,14 +79,14 @@
 
 .reviews__item-text {
     font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
 /* ----- Форма добавления отзыва ----- */
 .reviews__form {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 30px 28px;
     margin: 10px 0 50px;
@@ -96,11 +97,12 @@
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 6px;
+    color: var(--text-primary);
 }
 
 .reviews__form-sub {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted);
     margin-bottom: 20px;
 }
 
@@ -117,7 +119,7 @@
 .reviews__form-group label {
     display: block;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     margin-bottom: 6px;
     letter-spacing: 0.04em;
 }
@@ -126,10 +128,10 @@
 .reviews__form-group textarea {
     width: 100%;
     padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
     border-radius: 14px;
-    color: #fff;
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     outline: none;
@@ -138,8 +140,13 @@
 
 .reviews__form-group input:focus,
 .reviews__form-group textarea:focus {
-    border-color: #00b4ff;
-    background: rgba(0, 180, 255, 0.04);
+    border-color: var(--btn-primary);
+    background: var(--bg-secondary);
+}
+
+.reviews__form-group input::placeholder,
+.reviews__form-group textarea::placeholder {
+    color: var(--text-muted);
 }
 
 .reviews__form-group textarea {
@@ -168,7 +175,7 @@
 
 .reviews__form-button {
     padding: 14px 40px;
-    background: #00b4ff;
+    background: var(--btn-primary);
     border: none;
     border-radius: 60px;
     color: #0b0c0e;
@@ -180,8 +187,8 @@
 }
 
 .reviews__form-button:hover {
-    background: #1fc2ff;
-    box-shadow: 0 0 30px rgba(0, 180, 255, 0.3);
+    background: var(--btn-primary-hover);
+    box-shadow: 0 0 30px var(--shadow-color);
 }
 
 /* ----- Адаптация ----- */
