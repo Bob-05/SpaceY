@@ -96,7 +96,7 @@
     letter-spacing: -0.01em;
     margin-bottom: 6px;
     color: var(--text-primary);
-    padding-right: 44px;
+    padding-right: 48px;
 }
 
 .modal__price {
@@ -146,7 +146,6 @@
     color: var(--text-secondary);
 }
 
-/* ФОРМА */
 .modal__form {
     margin-top: 20px;
     padding-top: 20px;
@@ -208,7 +207,6 @@
     box-shadow: 0 0 30px var(--shadow-color);
 }
 
-/* СКРОЛЛБАР */
 .modal__content::-webkit-scrollbar {
     width: 4px;
 }
@@ -224,24 +222,22 @@
 }
 
 /* ============================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ
+   МОБИЛЬНАЯ АДАПТАЦИЯ — МОДАЛКА СНИЗУ
    ============================================ */
 
 @media (max-width: 768px) {
     .modal {
         padding: 0;
-        align-items: stretch;
+        align-items: flex-end;
     }
 
-    /* Модалка на всю высоту экрана, снизу прижата */
     .modal__content {
         padding: 60px 20px 32px;
         border-radius: 24px 24px 0 0;
         max-width: 100%;
+        width: 100%;
         max-height: 92vh;
-        margin-top: auto;
-        align-self: flex-end;
-        animation: modalInMobile 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: modalInMobile 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     @keyframes modalInMobile {
@@ -257,7 +253,7 @@
 
     .modal__title {
         font-size: 1.5rem;
-        padding-right: 44px;
+        padding-right: 52px;
     }
 
     .modal__price {
@@ -267,9 +263,9 @@
     .modal__close {
         top: 16px;
         right: 16px;
-        width: 36px;
-        height: 36px;
-        font-size: 1.6rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.7rem;
     }
 
     .modal__form-group input {
@@ -286,7 +282,7 @@
 
     .modal__title {
         font-size: 1.3rem;
-        padding-right: 40px;
+        padding-right: 48px;
     }
 
     .modal__price {
@@ -300,9 +296,9 @@
     .modal__close {
         top: 14px;
         right: 14px;
-        width: 34px;
-        height: 34px;
-        font-size: 1.4rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
     }
 
     .modal__includes li {

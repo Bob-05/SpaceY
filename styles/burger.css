@@ -40,7 +40,7 @@
 }
 
 /* ============================================
-   АДАПТАЦИЯ БУРГЕРА
+   АДАПТАЦИЯ
    ============================================ */
 
 @media (max-width: 768px) {
@@ -48,7 +48,6 @@
         display: flex;
     }
 
-    /* Меню — выезжающая справа панель через transform */
     .header__nav {
         position: fixed;
         top: 0;
@@ -70,12 +69,10 @@
         box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
         margin: 0;
         order: initial;
-
-        /* 👇 Ключевое: скрываем через transform, а не right */
         transform: translateX(100%);
+        will-change: transform;
     }
 
-    /* Меню открыто */
     .header__nav.active {
         transform: translateX(0);
     }
@@ -115,10 +112,6 @@
         font-size: 1.1rem;
     }
 }
-
-/* ============================================
-   БЛОКИРОВКА СКРОЛЛА
-   ============================================ */
 
 body.no-scroll {
     overflow: hidden;
