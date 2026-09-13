@@ -14,7 +14,21 @@ function openModal(cardId) {
         <p class="modal__price">${data.price}</p>
         <p class="modal__duration">⏱ ${data.duration}</p>
         <p class="modal__description">${data.description}</p>
-        
+
+        <!-- ГАЛЕРЕЯ -->
+        <div class="gallery">
+            <div class="gallery__main">
+                <img src="${data.images[0]}" alt="${data.title}" class="gallery__main-image" id="galleryMain">
+            </div>
+            <div class="gallery__thumbs">
+                ${data.images.map((img, i) => `
+                    <button class="gallery__thumb ${i === 0 ? 'active' : ''}" data-image="${img}">
+                        <img src="${img}" alt="Миниатюра ${i + 1}">
+                    </button>
+                `).join('')}
+            </div>
+        </div>
+
         <div class="modal__includes">
             <h4>Включено:</h4>
             <ul>
@@ -35,7 +49,24 @@ function openModal(cardId) {
         </form>
     `;
 
-    // Заглушка: просто показываем alert
+    // ЛОГИКА ГАЛЕРЕИ
+    const galleryMain = document.getElementById('galleryMain');
+    const thumbs = document.querySelectorAll('.gallery__thumb');
+
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            galleryMain.style.opacity = '0';
+            setTimeout(() => {
+                galleryMain.src = thumb.dataset.image;
+                galleryMain.style.opacity = '1';
+            }, 150);
+
+            thumbs.forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        });
+    });
+
+    // ОТПРАВКА ФОРМЫ (заглушка)
     const form = document.getElementById('bookingForm');
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -54,20 +85,15 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
-// Закрытие по крестику
 modalClose.addEventListener('click', closeModal);
-
-// Закрытие по клику на фон
 modalOverlay.addEventListener('click', closeModal);
 
-// Закрытие по ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeModal();
     }
 });
 
-// Открытие по кнопкам "ДЕТАЛИ →"
 document.querySelectorAll('[data-modal]').forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
