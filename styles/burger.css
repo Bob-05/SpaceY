@@ -2,7 +2,6 @@
    БУРГЕР-МЕНЮ
    ============================================ */
 
-/* ----- Бургер-кнопка ----- */
 .burger {
     display: none;
     flex-direction: column;
@@ -13,8 +12,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001;   /* выше меню */
-    order: 2;        /* между лого (1) и nav (3) */
+    z-index: 1001;
+    order: 2;
 }
 
 .burger__line {
@@ -27,7 +26,6 @@
     transform-origin: center;
 }
 
-/* Анимация бургера в крестик (активное состояние) */
 .burger.active .burger__line:nth-child(1) {
     transform: translateY(9.5px) rotate(45deg);
 }
@@ -46,16 +44,15 @@
    ============================================ */
 
 @media (max-width: 768px) {
-    /* Показываем бургер */
     .burger {
         display: flex;
     }
 
-    /* Меню — выезжающая справа панель */
+    /* Меню — выезжающая справа панель через transform */
     .header__nav {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 80%;
         max-width: 320px;
         height: 100vh;
@@ -67,20 +64,22 @@
         align-items: center;
         gap: 24px;
         padding: 40px 24px;
-        transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        z-index: 1000;   /* выше шапки (100), ниже бургера (1001) */
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 1000;
         border-left: 1px solid var(--border-color);
         box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
         margin: 0;
         order: initial;
+
+        /* 👇 Ключевое: скрываем через transform, а не right */
+        transform: translateX(100%);
     }
 
     /* Меню открыто */
     .header__nav.active {
-        right: 0;
+        transform: translateX(0);
     }
 
-    /* Ссылки в меню на мобильных */
     .header__nav .header__link {
         font-size: 1.2rem;
         padding: 8px 0;
@@ -93,7 +92,6 @@
         border-bottom-color: transparent;
     }
 
-    /* Статус в меню на мобильных */
     .header__nav .header__status {
         font-size: 0.7rem;
         margin-top: 8px;
@@ -102,7 +100,6 @@
         border-color: var(--status-border);
     }
 
-    /* Кнопка переключения темы внутри меню */
     .header__nav .theme-toggle {
         margin-top: 8px;
     }

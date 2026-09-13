@@ -67,18 +67,24 @@
    АДАПТАЦИЯ
    ============================================ */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .gallery {
         margin: 16px 0;
     }
 
     .gallery__main {
         border-radius: 12px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery__main {
+        border-radius: 10px;
         margin-bottom: 8px;
     }
 
     .gallery__thumbs {
-        grid-template-columns: repeat(4, 1fr);
         gap: 6px;
     }
 
@@ -90,15 +96,11 @@
 
 @media (max-width: 360px) {
     .gallery__thumbs {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-    }
-
-    .gallery__main {
-        border-radius: 10px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
     }
 
     .gallery__thumb {
-        border-radius: 6px;
+        border-radius: 4px;
     }
 }

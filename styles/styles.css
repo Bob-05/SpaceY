@@ -140,7 +140,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
-    padding: 20px 24px 16px;
+    padding: 20px 0 16px;
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -149,10 +149,20 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: background-color 0.4s, border-color 0.4s;
+}
 
-    /* Растягиваем фон на всю ширину экрана */
-    margin-left: -24px;
-    margin-right: -24px;
+/* Псевдо-элемент растягивает фон шапки на всю ширину экрана */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    z-index: -1;
 }
 
 .header__logo {
