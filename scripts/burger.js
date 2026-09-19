@@ -6,41 +6,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!burger || !nav) return;
 
-    // Закрытие меню (универсальная функция)
+    // Сохраняем позицию скролла при блокировке
+    let savedScrollY = 0;
+
+    function lockScroll() {
+        savedScrollY = window.scrollY || window.pageYOffset;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${savedScrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+        document.body.classList.add('no-scroll');
+    }
+
+    function unlockScroll() {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        document.body.classList.remove('no-scroll');
+        // Возвращаем позицию скролла
+        window.scrollTo(0, savedScrollY);
+    }
+
     function closeMenu() {
         burger.classList.remove('active');
         nav.classList.remove('active');
-        document.body.classList.remove('no-scroll');
+        unlockScroll();
     }
 
-    // Открытие/закрытие меню
+    function openMenu() {
+        burger.classList.add('active');
+        nav.classList.add('active');
+        lockScroll();
+    }
+
+    // При загрузке страницы — сбрасываем «залипшее» состояние
+    if (document.body.classList.contains('no-scroll')) {
+        unlockScroll();
+    }
+    closeMenu();
+
     burger.addEventListener('click', (e) => {
         e.stopPropagation();
-        burger.classList.toggle('active');
-        nav.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+        nav.classList.contains('active') ? closeMenu() : openMenu();
     });
 
-    // Закрытие меню при клике на ссылку
     nav.querySelectorAll('.header__link').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
 
-    // Закрытие при клике вне меню (на затемнённую область)
     document.addEventListener('click', (e) => {
         if (!nav.classList.contains('active')) return;
-
-        const isClickInsideNav = nav.contains(e.target);
-        const isClickOnBurger = burger.contains(e.target);
-
-        if (!isClickInsideNav && !isClickOnBurger) {
+        if (!nav.contains(e.target) && !burger.contains(e.target)) {
             closeMenu();
         }
     });
 
-    // Закрытие по Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && nav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) {
             closeMenu();
         }
     });
