@@ -142,7 +142,6 @@ body {
     justify-content: space-between;
     flex-wrap: nowrap;
     padding: 20px 0 16px;
-    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -150,6 +149,12 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: background-color 0.4s, border-color 0.4s;
+
+    /* Фон на всю ширину экрана без создания скролла */
+    box-shadow:
+        0 0 0 100vmax var(--bg-primary),
+        inset 0 -1px 0 0 var(--border-color);
+    clip-path: inset(0 -100vmax);
 }
 
 .header__logo {

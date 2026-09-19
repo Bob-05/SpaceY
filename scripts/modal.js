@@ -19,12 +19,19 @@ function openModal(cardId) {
         <div class="gallery">
             <div class="gallery__main">
                 <img src="${data.images[0]}" alt="${data.title}" class="gallery__main-image" id="galleryMain">
+                <button class="gallery__nav gallery__nav--prev" data-dir="-1" aria-label="Предыдущее фото">‹</button>
+                <button class="gallery__nav gallery__nav--next" data-dir="1" aria-label="Следующее фото">›</button>
             </div>
             <div class="gallery__thumbs">
                 ${data.images.map((img, i) => `
-                    <button class="gallery__thumb ${i === 0 ? 'active' : ''}" data-image="${img}">
+                    <button class="gallery__thumb ${i === 0 ? 'active' : ''}" data-index="${i}">
                         <img src="${img}" alt="Миниатюра ${i + 1}">
                     </button>
+                `).join('')}
+            </div>
+            <div class="gallery__dots">
+                ${data.images.map((_, i) => `
+                    <button class="gallery__dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Фото ${i + 1}"></button>
                 `).join('')}
             </div>
         </div>
@@ -49,24 +56,74 @@ function openModal(cardId) {
         </form>
     `;
 
-    // ЛОГИКА ГАЛЕРЕИ
+    // ===== ГАЛЕРЕЯ =====
     const galleryMain = document.getElementById('galleryMain');
     const thumbs = document.querySelectorAll('.gallery__thumb');
+    const dots = document.querySelectorAll('.gallery__dot');
+    const navButtons = document.querySelectorAll('.gallery__nav');
+    let currentIndex = 0;
+    const totalImages = data.images.length;
+
+    function showImage(index) {
+        if (index < 0) index = totalImages - 1;
+        if (index >= totalImages) index = 0;
+
+        currentIndex = index;
+
+        galleryMain.style.opacity = '0';
+        setTimeout(() => {
+            galleryMain.src = data.images[currentIndex];
+            galleryMain.style.opacity = '1';
+        }, 150);
+
+        thumbs.forEach(t => t.classList.remove('active'));
+        if (thumbs[currentIndex]) thumbs[currentIndex].classList.add('active');
+
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+    }
 
     thumbs.forEach(thumb => {
         thumb.addEventListener('click', () => {
-            galleryMain.style.opacity = '0';
-            setTimeout(() => {
-                galleryMain.src = thumb.dataset.image;
-                galleryMain.style.opacity = '1';
-            }, 150);
-
-            thumbs.forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
+            showImage(parseInt(thumb.dataset.index));
         });
     });
 
-    // ОТПРАВКА ФОРМЫ (заглушка)
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            showImage(parseInt(dot.dataset.index));
+        });
+    });
+
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + parseInt(btn.dataset.dir));
+        });
+    });
+
+    // Свайп
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    galleryMain.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    galleryMain.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                showImage(currentIndex + 1);
+            } else {
+                showImage(currentIndex - 1);
+            }
+        }
+    }, { passive: true });
+
+    // ===== ФОРМА =====
     const form = document.getElementById('bookingForm');
     if (form) {
         form.addEventListener('submit', (e) => {

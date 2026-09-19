@@ -40,7 +40,7 @@
 }
 
 /* ============================================
-   АДАПТАЦИЯ
+   АДАПТАЦИЯ — МЕНЮ ЧЕРЕЗ display: none
    ============================================ */
 
 @media (max-width: 768px) {
@@ -48,7 +48,10 @@
         display: flex;
     }
 
-    .header__nav {
+    /* УСИЛЕННАЯ СПЕЦИФИЧНОСТЬ: .header .header__nav
+       чтобы перебить стили из styles.css */
+    .header .header__nav {
+        display: none;
         position: fixed;
         top: 0;
         right: 0;
@@ -59,56 +62,93 @@
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         flex-direction: column;
+        flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
         gap: 24px;
         padding: 40px 24px;
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         z-index: 1000;
         border-left: 1px solid var(--border-color);
         box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
         margin: 0;
-        order: initial;
-        transform: translateX(100%);
-        will-change: transform;
+        overflow-y: auto;
     }
 
-    .header__nav.active {
-        transform: translateX(0);
+    /* Когда меню активно — display: flex + анимация появления */
+    .header .header__nav.active {
+        display: flex;
+        animation: menuSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .header__nav .header__link {
+    @keyframes menuSlideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    /* Затемнённый оверлей за меню */
+    .header .header__nav.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        z-index: -1;
+        animation: overlayIn 0.3s ease;
+    }
+
+    @keyframes overlayIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Ссылки в мобильном меню */
+    .header .header__nav .header__link {
         font-size: 1.2rem;
         padding: 8px 0;
         border-bottom: none;
         color: var(--text-secondary);
+        width: 100%;
+        text-align: center;
     }
 
-    .header__nav .header__link:hover {
+    .header .header__nav .header__link:hover {
         color: var(--text-primary);
         border-bottom-color: transparent;
     }
 
-    .header__nav .header__status {
+    .header .header__nav .header__status {
         font-size: 0.7rem;
         margin-top: 8px;
         color: var(--status-color);
         background: var(--status-bg);
-        border-color: var(--status-border);
+        border: 1px solid var(--status-border);
+        padding: 6px 14px;
+        border-radius: 40px;
+        white-space: nowrap;
     }
 
-    .header__nav .theme-toggle {
+    .header .header__nav .theme-toggle {
         margin-top: 8px;
     }
 }
 
 @media (max-width: 480px) {
-    .header__nav {
+    .header .header__nav {
         width: 100%;
         max-width: 100%;
     }
 
-    .header__nav .header__link {
+    .header .header__nav .header__link {
         font-size: 1.1rem;
     }
 }
