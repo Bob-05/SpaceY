@@ -133,7 +133,7 @@ body {
 }
 
 /* ============================================
-   ШАПКА — БЕЗ ОТРИЦАТЕЛЬНЫХ MARGIN
+   ШАПКА — ФОН ЧЕРЕЗ ::before, БЕЗ clip-path
    ============================================ */
 
 .header {
@@ -145,16 +145,32 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--bg-primary);
+    background: transparent;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    transition: background-color 0.4s, border-color 0.4s;
+    transition: background-color 0.4s;
+}
 
-    /* Фон на всю ширину экрана без создания скролла */
-    box-shadow:
-        0 0 0 100vmax var(--bg-primary),
-        inset 0 -1px 0 0 var(--border-color);
-    clip-path: inset(0 -100vmax);
+/* Full-width фон шапки — ровно по ширине окна, без переполнения */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    z-index: -1;
+    pointer-events: none;
+    transition: background-color 0.4s, border-color 0.4s;
+}
+
+/* Дети шапки — выше ::before */
+.header > * {
+    position: relative;
+    z-index: 1;
 }
 
 .header__logo {
@@ -162,7 +178,7 @@ body {
     align-items: center;
     text-decoration: none;
     transition: 0.2s;
-    order: 1;
+    flex-shrink: 0;
 }
 
 .header__logo-icon {
@@ -176,7 +192,6 @@ body {
     align-items: center;
     gap: 28px;
     flex-wrap: wrap;
-    order: 3;
 }
 
 .header__link {
@@ -488,7 +503,7 @@ body {
     font-weight: 600;
     letter-spacing: -0.01em;
     margin-top: 12px;
-    margin-right: 8px;
+    margin-right: 4px;
     color: var(--text-primary);
 }
 
@@ -509,10 +524,11 @@ body {
 }
 
 .section__title-icon {
-    width: 40px;
-    height: 15px;
+    width: 18%;
+    height: 18%;
     display: inline-block;
-    opacity: 0.8;
+    opacity: 0.85;
+    margin-bottom: 10px;
 }
 
 /* Сетка карточек */
@@ -864,12 +880,8 @@ body {
         padding: 0 20px;
     }
 
-    /* Шапка остаётся горизонтальной, никаких отрицательных margin */
     .header {
         padding: 16px 0 12px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
     }
 
     .header__logo-icon {
@@ -1020,10 +1032,6 @@ body {
     .footer__nav {
         flex-direction: column;
         gap: 16px;
-    }
-
-    .footer__brand {
-        font-size: 1.4rem;
     }
 
     .footer__title-icon {
