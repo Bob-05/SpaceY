@@ -1,5 +1,7 @@
 // ===== ДАННЫЕ О КАРТОЧКАХ =====
 
+
+
 const cardData = {
     moon: {
         title: '🌙 Уикенд на Луне',
@@ -80,3 +82,8 @@ const cardData = {
         ]
     }
 };
+
+
+module.exports = cardData;
+
+
