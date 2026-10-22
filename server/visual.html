@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+    <style>
+        /* Самый минимум стилей, чтобы текст не слипался */
+        body {
+            font-family: sans-serif;
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Список пользователей</h1>
+    
+    <!-- Простая таблица для вывода данных -->
+    <table id="users-table">
+        <thead>
+            <tr>
+                <th>ФИО</th>
+                <th>Телефон</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" style="text-align: center;">Загрузка данных...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        async function loadUsers() {
+            try {
+                const response = await fetch('/users');
+                const users = await response.json();
+                
+                const tbody = document.querySelector('#users-table tbody');
+                tbody.innerHTML = ''; // Очищаем строку загрузки
+
+                if (users.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">Пользователи не найдены</td></tr>';
+                    return;
+                }
+
+                // Просто добавляем строки в таблицу
+                users.forEach(user => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.last_name} ${user.first_name} ${user.middle_name}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.email}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error(error);
+                document.querySelector('#users-table tbody').innerHTML = 
+                    '<tr><td colspan="3" style="text-align: center; color: red;">Ошибка загрузки данных</td></tr>';
+            }
+        }
+
+        loadUsers();
+    </script>
+</body>
+</html>
