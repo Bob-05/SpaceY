@@ -16,6 +16,8 @@
 
     <script src="../scripts/scroll-to-top.js" defer></script>
     <script src="../scripts/burger.js" defer></script>
+    <script src="../scripts/tickets.js" defer></script>
+    <script src="../scripts/auth-state.js" defer></script>
     <script src="../scripts/theme.js" defer></script>
 </head>
 <body>
@@ -41,6 +43,7 @@
                 <a href="tickets.html" class="header__link header__link--active">Билеты</a>
                 <a href="reviews.html" class="header__link">Отзывы</a>
                 <a href="support.html" class="header__link">Поддержка</a>
+                <a href="../auth.html" class="header__auth">🔐 Вход</a>
                 <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
 
                 <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
@@ -63,79 +66,7 @@
             <!-- Левая колонка: выбор маршрута -->
             <div class="tickets__routes">
                 <form action="#" method="POST" class="tickets__form">
-
-                    <div class="tickets__route-card">
-                        <input type="radio" name="route" id="route-moon" value="moon" checked>
-                        <label for="route-moon" class="tickets__route-label">
-                            <span class="tickets__route-icon">🌙</span>
-                            <span class="tickets__route-info">
-                                <span class="tickets__route-name">Уикенд на Луне</span>
-                                <span class="tickets__route-desc">Прогулка по исторической базе и проживание в куполах</span>
-                            </span>
-                            <span class="tickets__route-price">$250K</span>
-                        </label>
-                    </div>
-
-                    <div class="tickets__route-card">
-                        <input type="radio" name="route" id="route-mars" value="mars">
-                        <label for="route-mars" class="tickets__route-label">
-                            <span class="tickets__route-icon">🔴</span>
-                            <span class="tickets__route-info">
-                                <span class="tickets__route-name">Экспедиция на Марс</span>
-                                <span class="tickets__route-desc">30-дневная экспедиция с исследованиями роверами</span>
-                            </span>
-                            <span class="tickets__route-price">$3.5M</span>
-                        </label>
-                    </div>
-
-                    <div class="tickets__route-card">
-                        <input type="radio" name="route" id="route-saturn" value="saturn">
-                        <label for="route-saturn" class="tickets__route-label">
-                            <span class="tickets__route-icon">🪐</span>
-                            <span class="tickets__route-info">
-                                <span class="tickets__route-name">Пролёт колец Сатурна</span>
-                                <span class="tickets__route-desc">Круиз параллельно ледяным кольцам</span>
-                            </span>
-                            <span class="tickets__route-price">$1.2M</span>
-                        </label>
-                    </div>
-
-                    <div class="tickets__route-card">
-                        <input type="radio" name="route" id="route-hotel" value="hotel">
-                        <label for="route-hotel" class="tickets__route-label">
-                            <span class="tickets__route-icon">🌍</span>
-                            <span class="tickets__route-info">
-                                <span class="tickets__route-name">Орбитальный отель</span>
-                                <span class="tickets__route-desc">5 дней на орбите, вид на Землю и невесомость</span>
-                            </span>
-                            <span class="tickets__route-price">$890K</span>
-                        </label>
-                    </div>
-
-                    <div class="tickets__route-card">
-                        <input type="radio" name="route" id="route-asteroid" value="asteroid">
-                        <label for="route-asteroid" class="tickets__route-label">
-                            <span class="tickets__route-icon">☄️</span>
-                            <span class="tickets__route-info">
-                                <span class="tickets__route-name">Облёт астероида</span>
-                                <span class="tickets__route-desc">Классический облёт с научной программой</span>
-                            </span>
-                            <span class="tickets__route-price">$2.1M</span>
-                        </label>
-                    </div>
-
-                    <div class="tickets__route-card">
-                        <input type="radio" name="route" id="route-titan" value="titan">
-                        <label for="route-titan" class="tickets__route-label">
-                            <span class="tickets__route-icon">🚀</span>
-                            <span class="tickets__route-info">
-                                <span class="tickets__route-name">Старт ARC-TITAN IX</span>
-                                <span class="tickets__route-desc">Сверхзвуковой тур на границу космоса</span>
-                            </span>
-                            <span class="tickets__route-price">$450K</span>
-                        </label>
-                    </div>
-
+                    <!-- Карточки маршрутов загружаются из БД скриптом scripts/tickets.js -->
                     <button type="submit" class="tickets__submit-btn">💳 Оплатить</button>
                 </form>
             </div>

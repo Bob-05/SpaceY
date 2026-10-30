@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="styles/gallery.css">
 
     <!-- Скрипты -->
-    <script src="scripts/data.js" defer></script>
     <script src="scripts/modal.js" defer></script>
+    <script src="scripts/cards.js" defer></script>
     <script src="scripts/burger.js" defer></script>
     <script src="scripts/scroll-to-top.js" defer></script>
+    <script src="scripts/auth-state.js" defer></script>
     <script src="scripts/theme.js" defer></script>
 </head>
 <body>
@@ -44,6 +45,7 @@
                 <a href="pages/tickets.html" class="header__link">Билеты</a>
                 <a href="pages/reviews.html" class="header__link">Отзывы</a>
                 <a href="pages/support.html" class="header__link">Поддержка</a>
+                <a href="auth.html" class="header__auth">🔐 Вход</a>
                 <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
 
                 <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
@@ -138,66 +140,7 @@
                 <div class="section__sub">Маршруты с подтверждённой готовностью</div>
 
                 <div class="cards-grid">
-                    <div class="card">
-                        <div class="card__badge">МАРШРУТ ГОТОВ</div>
-                        <div class="card__image">🌙</div>
-                        <h3 class="card__title">Уикенд на Луне</h3>
-                        <p class="card__description">Ощутите малую гравитацию. Прогулка по исторической базе и проживание в ультра-голубых куполах.</p>
-                        <div class="card__footer">
-                            <span class="card__price">$250K / место</span>
-                            <a href="#" class="card__link" data-modal="moon">ДЕТАЛИ →</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__badge">МАРШРУТ ГОТОВ</div>
-                        <div class="card__image">🔴</div>
-                        <h3 class="card__title">Экспедиция на Марс</h3>
-                        <p class="card__description">Монументальная 30-дневная экспедиция. Исследования роверами в долине Олимп и на красных равнинах.</p>
-                        <div class="card__footer">
-                            <span class="card__price">$3.5M / место</span>
-                            <a href="#" class="card__link" data-modal="mars">ДЕТАЛИ →</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__badge">МАРШРУТ ГОТОВ</div>
-                        <div class="card__image">🪐</div>
-                        <h3 class="card__title">Пролёт колец Сатурна</h3>
-                        <p class="card__description">Круиз параллельно ледяным кольцам. Захватывающая орбитальная траектория с панорамными видами атмосферы.</p>
-                        <div class="card__footer">
-                            <span class="card__price">$1.2M / место</span>
-                            <a href="#" class="card__link" data-modal="saturn">ДЕТАЛИ →</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__badge">НОВИНКА</div>
-                        <div class="card__image">🌍</div>
-                        <h3 class="card__title">Орбитальный отель</h3>
-                        <p class="card__description">5 дней на низкой орбите, вид на Землю, невесомость и спа-салон с панорамными окнами.</p>
-                        <div class="card__footer">
-                            <span class="card__price">$890K / место</span>
-                            <a href="#" class="card__link" data-modal="hotel">ДЕТАЛИ →</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__badge">ЭКСКЛЮЗИВ</div>
-                        <div class="card__image">☄️</div>
-                        <h3 class="card__title">Облёт астероида</h3>
-                        <p class="card__description">Классический облёт с научной программой. Фотосессия у поверхности и возврат к Земле.</p>
-                        <div class="card__footer">
-                            <span class="card__price">$2.1M / место</span>
-                            <a href="#" class="card__link" data-modal="asteroid">ДЕТАЛИ →</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__badge">ПОПУЛЯРНЫЙ</div>
-                        <div class="card__image">🚀</div>
-                        <h3 class="card__title">Старт ARC-TITAN IX</h3>
-                        <p class="card__description">Сверхзвуковой тур на границу космоса. Невесомость, виды Земли и научный эксперимент.</p>
-                        <div class="card__footer">
-                            <span class="card__price">$450K / место</span>
-                            <a href="#" class="card__link" data-modal="titan">ДЕТАЛИ →</a>
-                        </div>
-                    </div>
+                    <!-- Карточки маршрутов загружаются из БД скриптом scripts/cards.js -->
                 </div>
             </section>
 

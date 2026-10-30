@@ -18,6 +18,8 @@
     <!-- Скрипты -->
     <script src="../scripts/scroll-to-top.js" defer></script>
     <script src="../scripts/burger.js" defer></script>
+    <script src="../scripts/reviews.js" defer></script>
+    <script src="../scripts/auth-state.js" defer></script>
     <script src="../scripts/theme.js" defer></script>
 </head>
 <body>
@@ -43,6 +45,7 @@
                 <a href="tickets.html" class="header__link">Билеты</a>
                 <a href="reviews.html" class="header__link header__link--active">Отзывы</a>
                 <a href="support.html" class="header__link">Поддержка</a>
+                <a href="../auth.html" class="header__auth">🔐 Вход</a>
                 <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
 
                 <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
@@ -59,61 +62,9 @@
             <span>Отзывы</span>
         </div>
 
-        <!-- ОТЗЫВЫ (статические) -->
+        <!-- ОТЗЫВЫ (загружаются из БД скриптом scripts/reviews.js) -->
         <div class="reviews__grid">
-            <div class="reviews__item">
-                <div class="reviews__item-header">
-                    <span class="reviews__item-name">Алексей Смирнов</span>
-                    <span class="reviews__item-date">12.03.2026</span>
-                </div>
-                <div class="reviews__item-rating">★★★★★</div>
-                <div class="reviews__item-text">Невероятное путешествие! Лунная база превзошла все ожидания. Обязательно вернусь на Марс!</div>
-            </div>
-
-            <div class="reviews__item">
-                <div class="reviews__item-header">
-                    <span class="reviews__item-name">Екатерина Воронова</span>
-                    <span class="reviews__item-date">28.02.2026</span>
-                </div>
-                <div class="reviews__item-rating">★★★★☆</div>
-                <div class="reviews__item-text">Орбитальный отель — это что-то невероятное. Вид на Землю захватывает дух. Единственный минус — дороговато.</div>
-            </div>
-
-            <div class="reviews__item">
-                <div class="reviews__item-header">
-                    <span class="reviews__item-name">Дмитрий Кузнецов</span>
-                    <span class="reviews__item-date">15.01.2026</span>
-                </div>
-                <div class="reviews__item-rating">★★★★★</div>
-                <div class="reviews__item-text">Пролёт колец Сатурна — мечта всей жизни! Команда SpaceY сделала всё на высшем уровне. Рекомендую!</div>
-            </div>
-
-            <div class="reviews__item">
-                <div class="reviews__item-header">
-                    <span class="reviews__item-name">Ольга Морозова</span>
-                    <span class="reviews__item-date">03.12.2025</span>
-                </div>
-                <div class="reviews__item-rating">★★★★★</div>
-                <div class="reviews__item-text">Экспедиция на Марс — это не просто тур, это настоящее приключение. Роверы, виды, атмосфера — всё супер!</div>
-            </div>
-
-            <div class="reviews__item">
-                <div class="reviews__item-header">
-                    <span class="reviews__item-name">Михаил Волков</span>
-                    <span class="reviews__item-date">18.11.2025</span>
-                </div>
-                <div class="reviews__item-rating">★★★★☆</div>
-                <div class="reviews__item-text">Отличный сервис! Всё организовано на высшем уровне. Немного не хватило времени на Луне, но это мелочи.</div>
-            </div>
-
-            <div class="reviews__item">
-                <div class="reviews__item-header">
-                    <span class="reviews__item-name">Анна Соколова</span>
-                    <span class="reviews__item-date">05.10.2025</span>
-                </div>
-                <div class="reviews__item-rating">★★★★★</div>
-                <div class="reviews__item-text">Потрясающий опыт! Вид на Землю из космоса — это не передать словами. Спасибо SpaceY за эту возможность!</div>
-            </div>
+            <div class="reviews__item"><div class="reviews__item-text" style="text-align:center;">Загрузка отзывов...</div></div>
         </div>
 
         <!-- ФОРМА ДОБАВЛЕНИЯ ОТЗЫВА -->

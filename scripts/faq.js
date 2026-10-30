@@ -1,35 +1,51 @@
-// АККОРДЕОН (FAQ) — рендеринг из данных
+// ===== FAQ (АККОРДЕОН) — данные из БД через GET /api/faq =====
+
+function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[ch]));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const faqContainer = document.querySelector('.faq');
     if (!faqContainer) return;
 
-    // ОТРИСОВКА ИЗ ДАННЫХ 
-    function renderFaq() {
-        faqContainer.innerHTML = faqData.map(item => `
-            <div class="faq__item" data-id="${item.id}">
-                <button class="faq__question" aria-expanded="false">
-                    <span>${item.question}</span>
-                    <span class="faq__icon">+</span>
-                </button>
-                <div class="faq__answer">
-                    <p>${item.answer}</p>
-                </div>
-            </div>
-        `).join('');
+    // ЗАГРУЗКА ВОПРОСОВ ИЗ БАЗЫ ДАННЫХ
+    async function loadFaq() {
+        try {
+            const response = await fetch('/api/faq');
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            const items = await response.json();
 
-        // Инициализируем обработчики после отрисовки
-        initAccordion();
+            faqContainer.innerHTML = items.map((item) => `
+                <div class="faq__item" data-id="faq-${item.id}">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>${escapeHtml(item.question)}</span>
+                        <span class="faq__icon">+</span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>${escapeHtml(item.answer)}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            initAccordion();
+        } catch (error) {
+            console.error('Ошибка загрузки FAQ:', error);
+            faqContainer.innerHTML = '<p style="color: var(--button-danger, #ff3b5c); padding: 12px; text-align:center;">Не удалось загрузить FAQ из базы данных.</p>';
+        }
     }
 
     // ЛОГИКА АККОРДЕОНА
     function initAccordion() {
         const faqItems = document.querySelectorAll('.faq__item');
 
-        faqItems.forEach(item => {
+        faqItems.forEach((item) => {
             const question = item.querySelector('.faq__question');
-
-            // Удаляем старые обработчики, чтобы не было дублирования
             question.removeEventListener('click', handleClick);
             question.addEventListener('click', handleClick);
         });
@@ -41,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isActive = item.classList.contains('active');
 
         // Закрываем все остальные вопросы
-        document.querySelectorAll('.faq__item').forEach(otherItem => {
+        document.querySelectorAll('.faq__item').forEach((otherItem) => {
             if (otherItem !== item) {
                 otherItem.classList.remove('active');
                 otherItem.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
@@ -53,17 +69,5 @@ document.addEventListener('DOMContentLoaded', () => {
         question.setAttribute('aria-expanded', !isActive);
     }
 
-    // ЗАГРУЗКА С ДАННЫМИ ИЗ БД (заглушка для будущего)
-    // В будущем здесь можно заменить на fetch('/api/faq')
-    // fetch('/api/faq')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         // Если пришли данные из БД, обновляем faqData и перерисовываем
-    //         // faqData = data;
-    //         // renderFaq();
-    //     })
-    //     .catch(err => console.error('Ошибка загрузки FAQ:', err));
-
-    // Стартуем
-    renderFaq();
+    loadFaq();
 });

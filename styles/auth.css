@@ -1,0 +1,309 @@
+/* ============================================
+   СТРАНИЦА ВХОДА И РЕГИСТРАЦИИ (практ. раб. №10)
+   ============================================ */
+
+.page-auth {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----- Хлебные крошки ----- */
+.auth__breadcrumb {
+    padding: 20px 0 10px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.auth__breadcrumb a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.auth__breadcrumb a:hover {
+    color: var(--btn-primary);
+}
+
+.auth__breadcrumb span {
+    color: var(--text-muted);
+    margin: 0 6px;
+}
+
+/* ----- Обёртка ----- */
+.auth__wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 16px 80px;
+}
+
+/* ----- Карточка ----- */
+.auth__card {
+    width: 100%;
+    max-width: 520px;
+    background: var(--card-gradient-start);
+    background: linear-gradient(145deg, var(--card-gradient-start), var(--card-gradient-end));
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 36px 36px 28px;
+    box-shadow: 0 0 40px var(--shadow-color);
+}
+
+.auth__head {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth__title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.auth__sub {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    margin-top: 6px;
+}
+
+/* ----- Вкладки ----- */
+.auth__tabs {
+    display: flex;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 60px;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.auth__tab {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.auth__tab.active {
+    background: var(--btn-primary);
+    color: #0b0c0e;
+    box-shadow: 0 0 16px var(--shadow-color);
+}
+
+/* ----- Панели и формы ----- */
+.auth__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.auth__panel.hidden {
+    display: none;
+}
+
+.auth__form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.auth__form-group {
+    margin-bottom: 14px;
+}
+
+.auth__form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.required {
+    color: var(--btn-accent);
+}
+
+.auth__form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.auth__form-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.auth__form-group input:focus {
+    border-color: var(--btn-primary);
+    background: var(--bg-secondary);
+}
+
+/* ----- Кнопка отправки ----- */
+.auth__submit {
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px;
+    background: var(--btn-primary);
+    color: #0b0c0e;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.auth__submit:hover {
+    background: var(--btn-primary-hover);
+    box-shadow: 0 0 30px var(--shadow-color);
+    transform: scale(1.01);
+}
+
+/* ----- Результат ----- */
+.auth__result {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.auth__result--hidden {
+    display: none;
+}
+
+.auth__result--ok {
+    color: var(--status-color);
+    background: var(--status-bg);
+    border: 1px solid var(--status-border);
+}
+
+.auth__result--error {
+    color: var(--btn-accent);
+    background: rgba(255, 59, 92, 0.08);
+    border: 1px solid rgba(255, 59, 92, 0.2);
+}
+
+/* ----- JWT-токен ----- */
+.auth__token {
+    margin-top: 16px;
+    padding: 14px;
+    background: var(--bg-input);
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+}
+
+.auth__token.hidden {
+    display: none;
+}
+
+.auth__token-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.auth__token-value {
+    font-family: 'Consolas', 'Menlo', monospace;
+    font-size: 0.72rem;
+    color: var(--status-color);
+    word-break: break-all;
+    white-space: pre-wrap;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+/* ----- Подсказки ----- */
+.auth__demo {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.auth__demo b {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.auth__note {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ----- Ссылка «Нет аккаунта? / Уже есть аккаунт?» ----- */
+.auth__switch {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.auth__switch-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-left: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--btn-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: 0.2s;
+}
+
+.auth__switch-btn:hover {
+    color: var(--btn-primary-hover);
+}
+
+/* ----- Блок «Профиль» после авторизации ----- */
+.auth__profile {
+    margin-top: 12px;
+    padding: 14px;
+    background: var(--status-bg);
+    border: 1px solid var(--status-border);
+    border-radius: 10px;
+}
+
+.auth__profile.hidden {
+    display: none;
+}
+
+/* ----- Адаптивность ----- */
+@media (max-width: 560px) {
+    .auth__card {
+        padding: 24px 20px;
+    }
+
+    .auth__form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

@@ -1,4 +1,14 @@
-// ===== МОДАЛЬНОЕ ОКНО =====
+// ===== МОДАЛЬНОЕ ОКНО (данные карточек — из БД) =====
+
+function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[ch]));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('cardModal');
@@ -29,38 +39,41 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.right = '';
         document.body.style.width = '';
         document.body.classList.remove('no-scroll');
-        // Возвращаем пользователя на то же место
         window.scrollTo(0, savedScrollY);
     }
 
+    // ===== ДАННЫЕ КАРТОЧКИ: кэш (cards.js) или запрос к API =====
+    async function getTripData(cardId) {
+        if (window.__tripData && window.__tripData[cardId]) {
+            return window.__tripData[cardId];
+        }
+        const response = await fetch('/api/trips/' + encodeURIComponent(cardId));
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return await response.json();
+    }
+
     // ===== ОТКРЫТИЕ =====
-    function openModal(cardId) {
-        // Проверяем, что данные карточек загружены
-        if (typeof cardData === 'undefined') {
-            console.warn('⚠️ cardData не найден. Проверьте подключение scripts/data.js');
+    async function openModal(cardId) {
+        let data;
+        try {
+            data = await getTripData(cardId);
+        } catch (error) {
+            console.warn('Не удалось загрузить маршрут:', error.message);
             return;
         }
 
-        const data = cardData[cardId];
-        if (!data) return;
-
-        modalBody.innerHTML = `
-            <h2 class="modal__title">${data.title}</h2>
-            <p class="modal__price">${data.price}</p>
-            <p class="modal__duration">⏱ ${data.duration}</p>
-            <p class="modal__description">${data.description}</p>
-
-            <!-- ГАЛЕРЕЯ -->
+        const galleryHtml = (data.images && data.images.length)
+            ? `
             <div class="gallery">
                 <div class="gallery__main">
-                    <img src="${data.images[0]}" alt="${data.title}" class="gallery__main-image" id="galleryMain">
+                    <img src="${escapeHtml(data.images[0])}" alt="${escapeHtml(data.title)}" class="gallery__main-image" id="galleryMain">
                     <button class="gallery__nav gallery__nav--prev" data-dir="-1" aria-label="Предыдущее фото">‹</button>
                     <button class="gallery__nav gallery__nav--next" data-dir="1" aria-label="Следующее фото">›</button>
                 </div>
                 <div class="gallery__thumbs">
                     ${data.images.map((img, i) => `
                         <button class="gallery__thumb ${i === 0 ? 'active' : ''}" data-index="${i}">
-                            <img src="${img}" alt="Миниатюра ${i + 1}">
+                            <img src="${escapeHtml(img)}" alt="Миниатюра ${i + 1}">
                         </button>
                     `).join('')}
                 </div>
@@ -69,12 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="gallery__dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Фото ${i + 1}"></button>
                     `).join('')}
                 </div>
-            </div>
+            </div>`
+            : '';
+
+        modalBody.innerHTML = `
+            <h2 class="modal__title">${data.icon ? data.icon + ' ' : ''}${escapeHtml(data.title)}</h2>
+            <p class="modal__price">${escapeHtml(data.priceLabel)}</p>
+            <p class="modal__duration">⏱ ${escapeHtml(data.durationLabel)}</p>
+            <p class="modal__description">${escapeHtml(data.description)}</p>
+
+            ${galleryHtml}
 
             <div class="modal__includes">
                 <h4>Включено:</h4>
                 <ul>
-                    ${data.includes.map(item => `<li>${item}</li>`).join('')}
+                    ${data.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
                 </ul>
             </div>
 
@@ -93,62 +115,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ===== ГАЛЕРЕЯ =====
         const galleryMain = document.getElementById('galleryMain');
-        const thumbs = document.querySelectorAll('.gallery__thumb');
-        const dots = document.querySelectorAll('.gallery__dot');
-        const navButtons = document.querySelectorAll('.gallery__nav');
-        let currentIndex = 0;
-        const totalImages = data.images.length;
+        if (galleryMain) {
+            const thumbs = document.querySelectorAll('.gallery__thumb');
+            const dots = document.querySelectorAll('.gallery__dot');
+            const navButtons = document.querySelectorAll('.gallery__nav');
+            let currentIndex = 0;
+            const totalImages = data.images.length;
 
-        function showImage(index) {
-            if (index < 0) index = totalImages - 1;
-            if (index >= totalImages) index = 0;
+            function showImage(index) {
+                if (index < 0) index = totalImages - 1;
+                if (index >= totalImages) index = 0;
 
-            currentIndex = index;
+                currentIndex = index;
 
-            galleryMain.style.opacity = '0';
-            setTimeout(() => {
-                galleryMain.src = data.images[currentIndex];
-                galleryMain.style.opacity = '1';
-            }, 150);
+                galleryMain.style.opacity = '0';
+                setTimeout(() => {
+                    galleryMain.src = data.images[currentIndex];
+                    galleryMain.style.opacity = '1';
+                }, 150);
 
-            thumbs.forEach(t => t.classList.remove('active'));
-            if (thumbs[currentIndex]) thumbs[currentIndex].classList.add('active');
+                thumbs.forEach(t => t.classList.remove('active'));
+                if (thumbs[currentIndex]) thumbs[currentIndex].classList.add('active');
 
-            dots.forEach(d => d.classList.remove('active'));
-            if (dots[currentIndex]) dots[currentIndex].classList.add('active');
-        }
-
-        thumbs.forEach(thumb => {
-            thumb.addEventListener('click', () => {
-                showImage(parseInt(thumb.dataset.index));
-            });
-        });
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                showImage(parseInt(dot.dataset.index));
-            });
-        });
-
-        navButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showImage(currentIndex + parseInt(btn.dataset.dir));
-            });
-        });
-
-        // Свайп
-        let touchStartX = 0;
-        galleryMain.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        galleryMain.addEventListener('touchend', (e) => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) {
-                showImage(currentIndex + (diff > 0 ? 1 : -1));
+                dots.forEach(d => d.classList.remove('active'));
+                if (dots[currentIndex]) dots[currentIndex].classList.add('active');
             }
-        }, { passive: true });
+
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    showImage(parseInt(thumb.dataset.index));
+                });
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    showImage(parseInt(dot.dataset.index));
+                });
+            });
+
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showImage(currentIndex + parseInt(btn.dataset.dir));
+                });
+            });
+
+            // Свайп
+            let touchStartX = 0;
+            galleryMain.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            galleryMain.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    showImage(currentIndex + (diff > 0 ? 1 : -1));
+                }
+            }, { passive: true });
+        }
 
         // ===== ФОРМА =====
         const form = document.getElementById('bookingForm');
@@ -171,6 +195,20 @@ document.addEventListener('DOMContentLoaded', () => {
         unlockScroll();
     }
 
+    // ===== ПРИВЯЗКА КНОПОК [data-modal] =====
+    function handleCardClick(e) {
+        e.preventDefault();
+        openModal(this.dataset.modal);
+    }
+
+    // Публичная функция для повторной привязки кнопок (нужна cards.js)
+    window.initModalButtons = function () {
+        document.querySelectorAll('[data-modal]').forEach((button) => {
+            button.removeEventListener('click', handleCardClick);
+            button.addEventListener('click', handleCardClick);
+        });
+    };
+
     // ===== ОБРАБОТЧИКИ =====
     if (modalClose) modalClose.addEventListener('click', closeModal);
     if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
@@ -181,17 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Кнопки с data-modal
-    document.querySelectorAll('[data-modal]').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal(button.dataset.modal);
-        });
-    });
+    window.initModalButtons();
 
     // ===== СБРОС «ЗАЛИПШЕГО» СОСТОЯНИЯ ПРИ ЗАГРУЗКЕ =====
-    // Если пользователь обновил страницу, когда было открыто модальное окно,
-    // body мог остаться с position: fixed и top: -XXXpx
     if (document.body.classList.contains('no-scroll')) {
         document.body.style.position = '';
         document.body.style.top = '';

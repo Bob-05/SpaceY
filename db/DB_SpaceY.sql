@@ -304,3 +304,37 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- ============================================================
+--  Изменения для практической работы №10
+--  «Регистрация и авторизация пользователей в Node.js»
+--  (дублируют то, что автоматически делает сценарий server/seed.js)
+-- ============================================================
+
+-- 1. Пароль в users хранится ТОЛЬКО в виде хеша bcrypt
+ALTER TABLE `SpaceY`.`Users`
+  ADD COLUMN `password` VARCHAR(255) NOT NULL DEFAULT '' AFTER `email`,
+  MODIFY `middle_name` VARCHAR(50) NULL DEFAULT NULL,
+  MODIFY `phone` CHAR(11) NULL DEFAULT NULL,
+  ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE;
+
+-- 2. Карточки маршрутов: slug, иконка, бейдж (для выгрузки в HTML)
+ALTER TABLE `SpaceY`.`Trips`
+  ADD COLUMN `slug` VARCHAR(50) NULL DEFAULT NULL,
+  ADD COLUMN `icon` VARCHAR(10) NULL DEFAULT NULL,
+  ADD COLUMN `badge` VARCHAR(30) NULL DEFAULT NULL;
+
+-- 3. Отзывы: автор и дата (страница отзывов читается из БД)
+ALTER TABLE `SpaceY`.`Reviews`
+  ADD COLUMN `author_name` VARCHAR(100) NULL DEFAULT NULL,
+  ADD COLUMN `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- 4. Вопросы FAQ (аккордеон на странице поддержки)
+CREATE TABLE IF NOT EXISTS `SpaceY`.`FAQ_questions` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `question` TEXT NOT NULL,
+  `answer` TEXT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;

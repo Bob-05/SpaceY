@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Вход и регистрация — SpaceY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+    <!-- Стили -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/burger.css">
+    <link rel="stylesheet" href="styles/scroll-to-top.css">
+
+    <!-- Скрипты -->
+    <script src="scripts/scroll-to-top.js" defer></script>
+    <script src="scripts/burger.js" defer></script>
+    <script src="scripts/theme.js" defer></script>
+    <script src="scripts/auth-state.js" defer></script>
+    <script src="scripts/auth.js" defer></script>
+</head>
+<body>
+    <div class="page-auth">
+
+        <!-- ШАПКА -->
+        <header class="header">
+            <a href="index.html" class="header__logo">
+                <img src="assets/icons/logo-spacey.svg" alt="SpaceY" class="header__logo-icon">
+            </a>
+
+            <!-- БУРГЕР-КНОПКА -->
+            <button class="burger" id="burger" aria-label="Меню">
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+
+            <nav class="header__nav">
+                <a href="index.html" class="header__link">Главная</a>
+                <a href="index.html#routes" class="header__link">Маршруты</a>
+                <a href="index.html#advantages" class="header__link">Преимущества</a>
+                <a href="pages/tickets.html" class="header__link">Билеты</a>
+                <a href="pages/reviews.html" class="header__link">Отзывы</a>
+                <a href="pages/support.html" class="header__link">Поддержка</a>
+
+                <span class="header__auth header__auth--active">🔐 Вход</span>
+                <span class="header__status">СИСТЕМА: ОНЛАЙН</span>
+
+                <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                    <span class="theme-toggle__icon">🌙</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- ХЛЕБНЫЕ КРОШКИ -->
+        <div class="auth__breadcrumb">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <span>Вход и регистрация</span>
+        </div>
+
+        <!-- КАРТОЧКА ВХОДА / РЕГИСТРАЦИИ -->
+        <div class="auth__wrapper">
+            <div class="auth__card">
+
+                <div class="auth__head">
+                    <h1 class="auth__title">🛰 Личный кабинет</h1>
+                    <p class="auth__sub">Войдите или создайте аккаунт SpaceY</p>
+                </div>
+
+                <div class="auth__tabs">
+                    <button type="button" class="auth__tab active" data-tab="login">Вход</button>
+                    <button type="button" class="auth__tab" data-tab="register">Регистрация</button>
+                </div>
+
+                <!-- ---------- ВХОД ---------- -->
+                <div id="loginPanel" class="auth__panel">
+                    <form id="loginForm" novalidate>
+                        <div class="auth__form-group">
+                            <label for="login-email">Email <span class="required">*</span></label>
+                            <input type="email" id="login-email" name="email" placeholder="ivanov@mail.ru" autocomplete="email">
+                        </div>
+
+                        <div class="auth__form-group">
+                            <label for="login-password">Пароль <span class="required">*</span></label>
+                            <input type="password" id="login-password" name="password" placeholder="••••••" autocomplete="current-password">
+                        </div>
+
+                        <button type="submit" class="auth__submit">ВОЙТИ →</button>
+                    </form>
+
+                    <div id="loginResult" class="auth__result auth__result--hidden"></div>
+
+                    <div id="tokenWrap" class="auth__token hidden">
+                        <div class="auth__token-title">Ваш JWT-токен</div>
+                        <pre id="jwtToken" class="auth__token-value"></pre>
+                    </div>
+
+                    <div id="profileWrap" class="auth__profile hidden">
+                        <div class="auth__token-title">Профиль (защищённый маршрут GET /profile)</div>
+                        <pre id="profileData" class="auth__token-value"></pre>
+                    </div>
+
+                    <p class="auth__switch">Нет аккаунта?
+                        <button type="button" class="auth__switch-btn" data-switch="register">Зарегистрироваться</button>
+                    </p>
+
+                    <p class="auth__demo">
+                        Демо-аккаунт: <b>ivanov@mail.ru</b> / пароль <b>123456</b>
+                    </p>
+                </div>
+
+                <!-- ---------- РЕГИСТРАЦИЯ ---------- -->
+                <div id="registerPanel" class="auth__panel hidden">
+                    <form id="registerForm" novalidate>
+                        <div class="auth__form-row">
+                            <div class="auth__form-group">
+                                <label for="reg-last-name">Фамилия <span class="required">*</span></label>
+                                <input type="text" id="reg-last-name" name="last_name" placeholder="Иванов">
+                            </div>
+                            <div class="auth__form-group">
+                                <label for="reg-first-name">Имя <span class="required">*</span></label>
+                                <input type="text" id="reg-first-name" name="first_name" placeholder="Иван">
+                            </div>
+                        </div>
+
+                        <div class="auth__form-row">
+                            <div class="auth__form-group">
+                                <label for="reg-middle-name">Отчество</label>
+                                <input type="text" id="reg-middle-name" name="middle_name" placeholder="Иванович">
+                            </div>
+                            <div class="auth__form-group">
+                                <label for="reg-phone">Телефон</label>
+                                <input type="tel" id="reg-phone" name="phone" placeholder="+7 (999) 123-45-67">
+                            </div>
+                        </div>
+
+                        <div class="auth__form-group">
+                            <label for="reg-email">Email <span class="required">*</span></label>
+                            <input type="email" id="reg-email" name="email" placeholder="ivanov@mail.ru" autocomplete="email">
+                        </div>
+
+                        <div class="auth__form-row">
+                            <div class="auth__form-group">
+                                <label for="reg-password">Пароль <span class="required">*</span></label>
+                                <input type="password" id="reg-password" name="password" placeholder="не менее 6 символов" autocomplete="new-password">
+                            </div>
+                            <div class="auth__form-group">
+                                <label for="reg-password2">Повторите пароль <span class="required">*</span></label>
+                                <input type="password" id="reg-password2" name="password2" placeholder="••••••" autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="auth__submit">ЗАРЕГИСТРИРОВАТЬСЯ →</button>
+                    </form>
+
+                    <div id="registerResult" class="auth__result auth__result--hidden"></div>
+
+                    <p class="auth__switch">Уже есть аккаунт?
+                        <button type="button" class="auth__switch-btn" data-switch="login">Войти</button>
+                    </p>
+
+                    <p class="auth__note">
+                        Пароль сохраняется в базе данных только в виде bcrypt-хеша
+                        (практическая работа №10).
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ПОДВАЛ -->
+        <footer class="footer">
+            <div>
+                <img src="assets/icons/logo-spacey.svg" alt="SpaceY" class="footer__title-icon">
+            </div>
+            <div class="footer__nav">
+                <div class="footer__col">
+                    <span class="footer__col-head">Навигация</span>
+                    <a href="index.html" class="footer__link">Главная</a>
+                    <a href="pages/tickets.html" class="footer__link">Билеты</a>
+                    <a href="pages/reviews.html" class="footer__link">Отзывы</a>
+                    <a href="pages/support.html" class="footer__link">Поддержка</a>
+                </div>
+                <div class="footer__col">
+                    <span class="footer__col-head">Ресурсы</span>
+                    <a href="pages/support.html" class="footer__link">Портал поддержки</a>
+                    <a href="USER_AGREEMENT.md" class="footer__link">Соглашения</a>
+                    <a href="pages/support.html" class="footer__link">FAQ</a>
+                </div>
+                <div class="footer__col">
+                    <span class="footer__col-head">Разработчик</span>
+                    <a href="#" class="footer__link footer__link--max">
+                        <img src="assets/icons/icon-max.svg" alt="MAX" class="footer__max-icon">
+                        MAX
+                    </a>
+                </div>
+            </div>
+            <div class="footer__copy">
+                © 2035 SpaceY. Разработано для премиальных орбитальных путешествий. Все рейсы подтверждены орбитальным контролем.
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Кнопка наверх -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Наверх">↑</button>
+
+</body>
+</html>

@@ -216,6 +216,42 @@ body {
     border-bottom-color: var(--btn-primary);
 }
 
+/* Кнопка входа в шапке */
+.header__auth {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, rgba(0, 180, 255, 0.14), rgba(255, 59, 92, 0.12));
+    border: 1px solid var(--btn-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.header__auth:hover {
+    color: #fff;
+    box-shadow: 0 0 18px var(--shadow-color);
+    transform: translateY(-1px);
+}
+
+.header__auth--active {
+    background: var(--btn-primary);
+    color: #0b0c0e;
+}
+
+.header__auth--active:hover {
+    color: #0b0c0e;
+    background: var(--btn-primary-hover);
+}
+
 .header__status {
     font-size: 0.7rem;
     font-weight: 600;
@@ -538,6 +574,18 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 28px;
+}
+
+/* Сообщение при ошибке загрузки карточек из БД */
+.cards-error {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--btn-accent);
+    background: rgba(255, 59, 92, 0.06);
+    border: 1px dashed rgba(255, 59, 92, 0.3);
+    border-radius: 16px;
+    padding: 28px 20px;
+    line-height: 1.6;
 }
 
 .card {
